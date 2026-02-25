@@ -1,7 +1,6 @@
 /**
-    @file eve_example.h
-    @brief Target is BT817/BT818
-**/
+ @file simple_EVE4.ino
+ */
 /*
  * ============================================================================
  * (C) Copyright,  Bridgetek Pte. Ltd.
@@ -38,50 +37,40 @@
  * ============================================================================
  */
 
-#ifndef _EVE_EXAMPLE_H
-#define _EVE_EXAMPLE_H
-
-#include <stdint.h>
-#include <string.h>
-
-#if defined(ESP8266) || defined(ESP32)
-#include <pgmspace.h>
-#else
-#include <avr/pgmspace.h>
-#endif
-
-#include <Bridgetek_EVE4.h>
+#include "eve_example.h"
 
 /**
- @brief EVE library handle.
- @details This is the one instance of the EVE library. Available as a global.
- */
-extern Bridgetek_EVE4 eve;
-
-/**
- @brief Definitions of handles for custom fonts and bitmaps.
+ * @brief Functions used to store calibration data in file.
+   @details Currently not used.
  */
 //@{
-#define FONT_CUSTOM 8
-#define BITMAP_BRIDGETEK_LOGO 7
+int8_t platform_calib_init(void) {
+  return -1;
+}
+
+int8_t platform_calib_write(struct touchscreen_calibration *calib) {
+  (void)calib;
+  return 0;
+}
+
+int8_t platform_calib_read(struct touchscreen_calibration *calib) {
+  (void)calib;
+  return -1;
+}
 //@}
 
-/* Globals available within the eve_example code */
-extern uint32_t eve_img_bridgetek_logo_width;
-extern uint32_t eve_img_bridgetek_logo_height;
+uint32_t platform_get_time(void)
+{
+    return millis();
+}
 
-/* Functions called within the eve_example code */
-uint32_t eve_init_fonts(void);
-uint32_t eve_load_images(uint32_t);
+void setup() {
+  Serial.begin(9600);
+}
 
-/* Functions called from eve_example code to platform specific code */
-int8_t platform_calib_init(void);
-int8_t platform_calib_write(struct touchscreen_calibration *calib);
-int8_t platform_calib_read(struct touchscreen_calibration *calib);
+void loop() {
+  // Initialise the display
+  Serial.print("Starting EVE...\n");
 
-/* Entry point to the example code */
-void eve_example(void);
-
-#include "touch.h"
-
-#endif /* _EVE_EXAMPLE_H */
+  eve_example();
+}

@@ -1,7 +1,6 @@
 /**
-    @file eve_example.h
-    @brief Target is BT817/BT818
-**/
+ @file fonts.c
+ */
 /*
  * ============================================================================
  * (C) Copyright,  Bridgetek Pte. Ltd.
@@ -37,18 +36,8 @@
  * has no liability in relation to those amendments.
  * ============================================================================
  */
-
-#ifndef _EVE_EXAMPLE_H
-#define _EVE_EXAMPLE_H
-
 #include <stdint.h>
-#include <string.h>
-
-#if defined(ESP8266) || defined(ESP32)
-#include <pgmspace.h>
-#else
-#include <avr/pgmspace.h>
-#endif
+#include <stddef.h>
 
 #include <Bridgetek_EVE4.h>
 
@@ -58,30 +47,67 @@
  */
 extern Bridgetek_EVE4 eve;
 
-/**
- @brief Definitions of handles for custom fonts and bitmaps.
- */
-//@{
-#define FONT_CUSTOM 8
-#define BITMAP_BRIDGETEK_LOGO 7
-//@}
+#include "sound.h"
 
-/* Globals available within the eve_example code */
-extern uint32_t eve_img_bridgetek_logo_width;
-extern uint32_t eve_img_bridgetek_logo_height;
+void enableSound(void)
+{
 
-/* Functions called within the eve_example code */
-uint32_t eve_init_fonts(void);
-uint32_t eve_load_images(uint32_t);
+    uint16_t regGpiox;
+	uint16_t regGpioxDir;
 
-/* Functions called from eve_example code to platform specific code */
-int8_t platform_calib_init(void);
-int8_t platform_calib_write(struct touchscreen_calibration *calib);
-int8_t platform_calib_read(struct touchscreen_calibration *calib);
+	// Read GPIOX_DIR register
+	regGpioxDir = eve.LIB_MemRead16(eve.REG_GPIOX_DIR);
+	// Set bit 2 of  GPIO_DIR register  to output (GPIO2)
+	regGpioxDir = regGpioxDir | 0x0004;
+	// Enable GPIO2 as an output
+	eve.LIB_MemWrite16(eve.REG_GPIOX_DIR, regGpioxDir);
 
-/* Entry point to the example code */
-void eve_example(void);
+	// Read REG_GPIOX
+	regGpiox = eve.LIB_MemRead16(eve.REG_GPIOX);
+	// Set bit 2 of GPIOX register (GPIO2) high
+	regGpiox = regGpiox | 0x0004;
+	// Enable the GPIO2 signal to the Audio Driver
+	eve.LIB_MemWrite16(eve.REG_GPIOX, regGpiox);
 
-#include "touch.h"
+	// Turn synthesizer volume up
+	eve.LIB_MemWrite8(eve.REG_VOL_SOUND, 255);
+	// Set synthesizer to mute
+	eve.LIB_MemWrite8(eve.REG_SOUND, 0x60);
+	// Play sound
+	eve.LIB_MemWrite8(eve.REG_PLAY, 1);
 
-#endif /* _EVE_EXAMPLE_H */
+}
+
+void playSound(uint8_t sound, uint8_t note)
+{
+	// set synthesizer to chime c#3
+	eve.LIB_MemWrite16(eve.REG_SOUND, (note << 8) | sound);
+	// play sound
+	eve.LIB_MemWrite8(eve.REG_PLAY, 1);
+
+}
+
+void playClick(void)
+{
+    playSound(SOUND_CLICK, 0);
+}
+
+void playChimes(uint8_t note)
+{
+    playSound(SOUND_CHIMES, note);
+}
+
+void playBell(uint8_t note)
+{
+    playSound(SOUND_BELL, note);
+}
+
+void playPip(uint8_t note)
+{
+    playSound(SOUND_1PIP, note);
+}
+
+void playClack(void)
+{
+    playSound(SOUND_CLACK, 0);
+}

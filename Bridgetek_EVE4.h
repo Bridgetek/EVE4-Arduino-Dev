@@ -50,7 +50,7 @@
 #undef DISPLAY
 
 #define EVE_API 4
-#define EVE_SUB_API
+#define EVE_SUB_API 
 
 //@{
 /** @brief Library Includes
@@ -60,7 +60,7 @@
  */
 //@{
 extern "C" {
-#include <EVE.h>
+#include <EVE4.h>
 #include <HAL.h>
 #include <MCU.h>
 }
@@ -74,335 +74,26 @@ class Bridgetek_EVE4
   void setup(uint32_t panel);
 
   public:
-    const uint32_t ADC_DIFFERENTIAL = 0x1ul;
-    const uint32_t ADC_SINGLE_ENDED = 0x0ul;
-    const uint32_t ADPCM_SAMPLES = 0x2ul;
-    const uint32_t ALPHA = 0x5ul;
-    const uint32_t ANIM_HOLD = 0x2ul;
-    const uint32_t ANIM_LOOP = 0x1ul;
-    const uint32_t ANIM_ONCE = 0x0ul;
-    const uint32_t API = 4;
-    const uint32_t BEGIN_BITMAPS = 0x1ul;
-    const uint32_t BEGIN_EDGE_STRIP_A = 0x7ul;
-    const uint32_t BEGIN_EDGE_STRIP_B = 0x8ul;
-    const uint32_t BEGIN_EDGE_STRIP_L = 0x6ul;
-    const uint32_t BEGIN_EDGE_STRIP_R = 0x5ul;
-    const uint32_t BEGIN_LINES = 0x3ul;
-    const uint32_t BEGIN_LINE_STRIP = 0x4ul;
-    const uint32_t BEGIN_POINTS = 0x2ul;
-    const uint32_t BEGIN_RECTS = 0x9ul;
-    const uint32_t BLEND_DST_ALPHA = 0x3ul;
-    const uint32_t BLEND_ONE = 0x1ul;
-    const uint32_t BLEND_ONE_MINUS_DST_ALPHA = 0x5ul;
-    const uint32_t BLEND_ONE_MINUS_SRC_ALPHA = 0x4ul;
-    const uint32_t BLEND_SRC_ALPHA = 0x2ul;
-    const uint32_t BLEND_ZERO = 0x0ul;
-    const uint32_t BLUE = 0x4ul;
-    const uint32_t DLSWAP_DONE = 0x0ul;
-    const uint32_t DLSWAP_FRAME = 0x2ul;
-    const uint32_t DLSWAP_LINE = 0x1ul;
-    const uint32_t FILTER_BILINEAR = 0x1ul;
-    const uint32_t FILTER_NEAREST = 0x0ul;
-    const uint32_t FLASH_STATUS_BASIC = 0x2ul;
-    const uint32_t FLASH_STATUS_DETACHED = 0x1ul;
-    const uint32_t FLASH_STATUS_FULL = 0x3ul;
-    const uint32_t FLASH_STATUS_INIT = 0x0ul;
-    const uint32_t FORMAT_ARGB1555 = 0x0ul;
-    const uint32_t FORMAT_ARGB2 = 0x5ul;
-    const uint32_t FORMAT_ARGB4 = 0x6ul;
-    const uint32_t FORMAT_BARGRAPH = 0xbul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_10x10_KHR = 0x93bbul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_10x5_KHR = 0x93b8ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_10x6_KHR = 0x93b9ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_10x8_KHR = 0x93baul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_12x10_KHR = 0x93bcul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_12x12_KHR = 0x93bdul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_4x4_KHR = 0x93b0ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_5x4_KHR = 0x93b1ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_5x5_KHR = 0x93b2ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_6x5_KHR = 0x93b3ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_6x6_KHR = 0x93b4ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_8x5_KHR = 0x93b5ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_8x6_KHR = 0x93b6ul;
-    const uint32_t FORMAT_COMPRESSED_RGBA_ASTC_8x8_KHR = 0x93b7ul;
-    const uint32_t FORMAT_L1 = 0x1ul;
-    const uint32_t FORMAT_L2 = 0x11ul;
-    const uint32_t FORMAT_L4 = 0x2ul;
-    const uint32_t FORMAT_L8 = 0x3ul;
-    const uint32_t FORMAT_PALETTED = 0x8ul;
-    const uint32_t FORMAT_PALETTED4444 = 0xful;
-    const uint32_t FORMAT_PALETTED565 = 0xeul;
-    const uint32_t FORMAT_PALETTED8 = 0x10ul;
-    const uint32_t FORMAT_RGB332 = 0x4ul;
-    const uint32_t FORMAT_RGB565 = 0x7ul;
-    const uint32_t FORMAT_TEXT8X8 = 0x9ul;
-    const uint32_t FORMAT_TEXTVGA = 0xaul;
-    const uint32_t GLFORMAT = 0x1ful;
-    const uint32_t GREEN = 0x3ul;
-    const uint32_t INT_CMDEMPTY = 0x20ul;
-    const uint32_t INT_CMDFLAG = 0x40ul;
-    const uint32_t INT_CONVCOMPLETE = 0x80ul;
-    const uint32_t INT_G8 = 0x12ul;
-    const uint32_t INT_L8C = 0xcul;
-    const uint32_t INT_PLAYBACK = 0x10ul;
-    const uint32_t INT_SOUND = 0x8ul;
-    const uint32_t INT_SWAP = 0x1ul;
-    const uint32_t INT_TAG = 0x4ul;
-    const uint32_t INT_TOUCH = 0x2ul;
-    const uint32_t INT_VGA = 0xdul;
-    const uint32_t LINEAR_SAMPLES = 0x0ul;
-    const uint32_t LOW_FREQ_BOUND = 58800000L;
-    const uint32_t OPT_3D = 0x0ul;
-    const uint32_t OPT_CENTER = 0x600ul;
-    const uint32_t OPT_CENTERX = 0x200ul;
-    const uint32_t OPT_CENTERY = 0x400ul;
-    const uint32_t OPT_DITHER = 0x100ul;
-    const uint32_t OPT_FILL = 0x2000ul;
-    const uint32_t OPT_FLASH = 0x40ul;
-    const uint32_t OPT_FLAT = 0x100ul;
-    const uint32_t OPT_FORMAT = 0x1000ul;
-    const uint32_t OPT_FULLSCREEN = 0x8ul;
-    const uint32_t OPT_MEDIAFIFO = 0x10ul;
-    const uint32_t OPT_MONO = 0x1ul;
-    const uint32_t OPT_NOBACK = 0x1000ul;
-    const uint32_t OPT_NODL = 0x2ul;
-    const uint32_t OPT_NOHANDS = 0xc000ul;
-    const uint32_t OPT_NOHM = 0x4000ul;
-    const uint32_t OPT_NOPOINTER = 0x4000ul;
-    const uint32_t OPT_NOSECS = 0x8000ul;
-    const uint32_t OPT_NOTEAR = 0x4ul;
-    const uint32_t OPT_NOTICKS = 0x2000ul;
-    const uint32_t OPT_OVERLAY = 0x80ul;
-    const uint32_t OPT_RGB565 = 0x0ul;
-    const uint32_t OPT_RIGHTX = 0x800ul;
-    const uint32_t OPT_SIGNED = 0x100ul;
-    const uint32_t OPT_SOUND = 0x20ul;
-    const uint32_t RAM_BIST = 0x380000ul;
-    const uint32_t RAM_CMD = 0x308000ul;
-    const uint32_t RAM_CMD_SIZE = (4*1024L);
-    const uint32_t RAM_DL = 0x300000ul;
-    const uint32_t RAM_DL_SIZE = (8*1024L);
-    const uint32_t RAM_ERR_REPORT = 0x309800ul;
-    const uint32_t RAM_G = 0x0ul;
-    const uint32_t RAM_G_SIZE = (1024*1024L);
-    const uint32_t RAM_REG = 0x302000ul;
-    const uint32_t RAM_ROMSUB = 0x30a000ul;
-    const uint32_t RAM_TOP = 0x304000ul;
-    const uint32_t RED = 0x2ul;
-    const uint32_t REG_ADAPTIVE_FRAMERATE = 0x30257cul;
-    const uint32_t REG_AH_HCYCLE_MAX = 0x302610;
-    const uint32_t REG_ANALOG = 0x30216cul;
-    const uint32_t REG_ANA_COMP = 0x302184ul;
-    const uint32_t REG_ANIM_ACTIVE = 0x30902cul;
-    const uint32_t REG_BIST_EN = 0x302174ul;
-    const uint32_t REG_BUSYBITS = 0x3020e8ul;
-    const uint32_t REG_CLOCK = 0x302008ul;
-    const uint32_t REG_CMDB_SPACE = 0x302574ul;
-    const uint32_t REG_CMDB_WRITE = 0x302578ul;
-    const uint32_t REG_CMD_DL = 0x302100ul;
-    const uint32_t REG_CMD_READ = 0x3020f8ul;
-    const uint32_t REG_CMD_WRITE = 0x3020fcul;
-    const uint32_t REG_COPRO_PATCH_PTR = 0x309162ul;
-    const uint32_t REG_CPURESET = 0x302020ul;
-    const uint32_t REG_CSPREAD = 0x302068ul;
-    const uint32_t REG_CTOUCH_EXTENDED = 0x302108ul;
-    const uint32_t REG_CTOUCH_TOUCH0_XY = 0x302124ul;
-    const uint32_t REG_CTOUCH_TOUCH1_XY = 0x30211cul;
-    const uint32_t REG_CTOUCH_TOUCH2_XY = 0x30218cul;
-    const uint32_t REG_CTOUCH_TOUCH3_XY = 0x302190ul;
-    const uint32_t REG_CTOUCH_TOUCH4_X = 0x30216cul;
-    const uint32_t REG_CTOUCH_TOUCH4_Y = 0x302120ul;
-    const uint32_t REG_DITHER = 0x302060ul;
-    const uint32_t REG_DLSWAP = 0x302054ul;
-    const uint32_t REG_EHOST_TOUCH_ACK = 0x302170ul;
-    const uint32_t REG_EHOST_TOUCH_ID = 0x302114ul;
-    const uint32_t REG_EHOST_TOUCH_X = 0x30210cul;
-    const uint32_t REG_EHOST_TOUCH_Y = 0x302118ul;
-    const uint32_t REG_EJPG_ACC = 0x302358ul;
-    const uint32_t REG_EJPG_BUSY = 0x302198ul;
-    const uint32_t REG_EJPG_DAT = 0x30219cul;
-    const uint32_t REG_EJPG_DCC = 0x302340ul;
-    const uint32_t REG_EJPG_DEBUG = 0x30255cul;
-    const uint32_t REG_EJPG_DST = 0x3021a4ul;
-    const uint32_t REG_EJPG_FORMAT = 0x3021b0ul;
-    const uint32_t REG_EJPG_H = 0x3021acul;
-    const uint32_t REG_EJPG_HT = 0x302240ul;
-    const uint32_t REG_EJPG_OPTIONS = 0x3021a0ul;
-    const uint32_t REG_EJPG_Q = 0x3021c0ul;
-    const uint32_t REG_EJPG_READY = 0x302194ul;
-    const uint32_t REG_EJPG_RI = 0x3021b4ul;
-    const uint32_t REG_EJPG_SCALE = 0x302558ul;
-    const uint32_t REG_EJPG_TDA = 0x3021bcul;
-    const uint32_t REG_EJPG_TQ = 0x3021b8ul;
-    const uint32_t REG_EJPG_W = 0x3021a8ul;
-    const uint32_t REG_ESPIM_ADD = 0x30259cul;
-    const uint32_t REG_ESPIM_COUNT = 0x3025a0ul;
-    const uint32_t REG_ESPIM_DUMMY = 0x3025e4ul;
-    const uint32_t REG_ESPIM_READSTART = 0x302588ul;
-    const uint32_t REG_ESPIM_SEQ = 0x30258cul;
-    const uint32_t REG_ESPIM_TRIG = 0x3025e8ul;
-    const uint32_t REG_ESPIM_WINDOW = 0x3025a4ul;
-    const uint32_t REG_FLASH_SIZE = 0x309024ul;
-    const uint32_t REG_FLASH_STATUS = 0x3025f0ul;
-    const uint32_t REG_FRAMES = 0x302004ul;
-    const uint32_t REG_FREQUENCY = 0x30200cul;
-    const uint32_t REG_FULLBUSYBITS = 0x3025f4ul;
-    const uint32_t REG_GPIO = 0x302094ul;
-    const uint32_t REG_GPIOX = 0x30209cul;
-    const uint32_t REG_GPIOX_DIR = 0x302098ul;
-    const uint32_t REG_GPIO_DIR = 0x302090ul;
-    const uint32_t REG_HCYCLE = 0x30202cul;
-    const uint32_t REG_HOFFSET = 0x302030ul;
-    const uint32_t REG_HSIZE = 0x302034ul;
-    const uint32_t REG_HSYNC0 = 0x302038ul;
-    const uint32_t REG_HSYNC1 = 0x30203cul;
-    const uint32_t REG_ID = 0x302000ul;
-    const uint32_t REG_INT_EN = 0x3020acul;
-    const uint32_t REG_INT_FLAGS = 0x3020a8ul;
-    const uint32_t REG_INT_MASK = 0x3020b0ul;
-    const uint32_t REG_MACRO_0 = 0x3020d8ul;
-    const uint32_t REG_MACRO_1 = 0x3020dcul;
-    const uint32_t REG_MEDIAFIFO_BASE = 0x30901cul;
-    const uint32_t REG_MEDIAFIFO_READ = 0x309014ul;
-    const uint32_t REG_MEDIAFIFO_SIZE = 0x309020ul;
-    const uint32_t REG_MEDIAFIFO_WRITE = 0x309018ul;
-    const uint32_t REG_OUTBITS = 0x30205cul;
-    const uint32_t REG_PCLK = 0x302070ul;
-    const uint32_t REG_PCLK_2X = 0x302618;
-    const uint32_t REG_PCLK_FREQ = 0x302614;
-    const uint32_t REG_PCLK_POL = 0x30206cul;
-    const uint32_t REG_PLAY = 0x30208cul;
-    const uint32_t REG_PLAYBACK_FORMAT = 0x3020c4ul;
-    const uint32_t REG_PLAYBACK_FREQ = 0x3020c0ul;
-    const uint32_t REG_PLAYBACK_LENGTH = 0x3020b8ul;
-    const uint32_t REG_PLAYBACK_LOOP = 0x3020c8ul;
-    const uint32_t REG_PLAYBACK_PAUSE = 0x3025ecul;
-    const uint32_t REG_PLAYBACK_PLAY = 0x3020ccul;
-    const uint32_t REG_PLAYBACK_READPTR = 0x3020bcul;
-    const uint32_t REG_PLAYBACK_START = 0x3020b4ul;
-    const uint32_t REG_PLAY_CONTROL = 0x30914eul;
-    const uint32_t REG_PWM_DUTY = 0x3020d4ul;
-    const uint32_t REG_PWM_HZ = 0x3020d0ul;
-    const uint32_t REG_RAM_FOLD = 0x3020f4ul;
-    const uint32_t REG_RASTERY = 0x302560ul;
-    const uint32_t REG_RENDERMODE = 0x302010ul;
-    const uint32_t REG_ROMSUB_SEL = 0x3020f0ul;
-    const uint32_t REG_ROTATE = 0x302058ul;
-    const uint32_t REG_SNAPFORMAT = 0x30201cul;
-    const uint32_t REG_SNAPSHOT = 0x302018ul;
-    const uint32_t REG_SNAPY = 0x302014ul;
-    const uint32_t REG_SOUND = 0x302088ul;
-    const uint32_t REG_SPIM = 0x302584ul;
-    const uint32_t REG_SPIM_DIR = 0x302580ul;
-    const uint32_t REG_SPI_EARLY_TX = 0x30217cul;
-    const uint32_t REG_SPI_WIDTH = 0x302188ul;
-    const uint32_t REG_SWIZZLE = 0x302064ul;
-    const uint32_t REG_TAG = 0x30207cul;
-    const uint32_t REG_TAG_X = 0x302074ul;
-    const uint32_t REG_TAG_Y = 0x302078ul;
-    const uint32_t REG_TAP_CRC = 0x302024ul;
-    const uint32_t REG_TAP_MASK = 0x302028ul;
-    const uint32_t REG_TOUCH_ADC_MODE = 0x302108ul;
-    const uint32_t REG_TOUCH_CHARGE = 0x30210cul;
-    const uint32_t REG_TOUCH_CONFIG = 0x302168ul;
-    const uint32_t REG_TOUCH_DIRECT_XY = 0x30218cul;
-    const uint32_t REG_TOUCH_DIRECT_Z1Z2 = 0x302190ul;
-    const uint32_t REG_TOUCH_FAULT = 0x302170ul;
-    const uint32_t REG_TOUCH_MODE = 0x302104ul;
-    const uint32_t REG_TOUCH_OVERSAMPLE = 0x302114ul;
-    const uint32_t REG_TOUCH_RAW_XY = 0x30211cul;
-    const uint32_t REG_TOUCH_RZ = 0x302120ul;
-    const uint32_t REG_TOUCH_RZTHRESH = 0x302118ul;
-    const uint32_t REG_TOUCH_SCREEN_XY = 0x302124ul;
-    const uint32_t REG_TOUCH_SETTLE = 0x302110ul;
-    const uint32_t REG_TOUCH_TAG = 0x30212cul;
-    const uint32_t REG_TOUCH_TAG1 = 0x302134ul;
-    const uint32_t REG_TOUCH_TAG1_XY = 0x302130ul;
-    const uint32_t REG_TOUCH_TAG2 = 0x30213cul;
-    const uint32_t REG_TOUCH_TAG2_XY = 0x302138ul;
-    const uint32_t REG_TOUCH_TAG3 = 0x302144ul;
-    const uint32_t REG_TOUCH_TAG3_XY = 0x302140ul;
-    const uint32_t REG_TOUCH_TAG4 = 0x30214cul;
-    const uint32_t REG_TOUCH_TAG4_XY = 0x302148ul;
-    const uint32_t REG_TOUCH_TAG_XY = 0x302128ul;
-    const uint32_t REG_TOUCH_TRANSFORM_A = 0x302150ul;
-    const uint32_t REG_TOUCH_TRANSFORM_B = 0x302154ul;
-    const uint32_t REG_TOUCH_TRANSFORM_C = 0x302158ul;
-    const uint32_t REG_TOUCH_TRANSFORM_D = 0x30215cul;
-    const uint32_t REG_TOUCH_TRANSFORM_E = 0x302160ul;
-    const uint32_t REG_TOUCH_TRANSFORM_F = 0x302164ul;
-    const uint32_t REG_TRACKER = 0x309000ul;
-    const uint32_t REG_TRACKER_1 = 0x309004ul;
-    const uint32_t REG_TRACKER_2 = 0x309008ul;
-    const uint32_t REG_TRACKER_3 = 0x30900cul;
-    const uint32_t REG_TRACKER_4 = 0x309010ul;
-    const uint32_t REG_TRIM = 0x302180ul;
-    const uint32_t REG_UNDERRUN = 0x30260C;
-    const uint32_t REG_VCYCLE = 0x302040ul;
-    const uint32_t REG_VOFFSET = 0x302044ul;
-    const uint32_t REG_VOL_PB = 0x302080ul;
-    const uint32_t REG_VOL_SOUND = 0x302084ul;
-    const uint32_t REG_VSIZE = 0x302048ul;
-    const uint32_t REG_VSYNC0 = 0x30204cul;
-    const uint32_t REG_VSYNC1 = 0x302050ul;
-    const uint32_t ROMFONT_MAX = 34;
-    const uint32_t ROMFONT_TABLEADDRESS = 0x2ffffcul;
-    const uint32_t STENCIL_DECR = 0x4ul;
-    const uint32_t STENCIL_INCR = 0x3ul;
-    const uint32_t STENCIL_INVERT = 0x5ul;
-    const uint32_t STENCIL_KEEP = 0x1ul;
-    const uint32_t STENCIL_REPLACE = 0x2ul;
-    const uint32_t STENCIL_ZERO = 0x0ul;
-    const uint32_t TEST_ALWAYS = 0x7ul;
-    const uint32_t TEST_EQUAL = 0x5ul;
-    const uint32_t TEST_GEQUAL = 0x4ul;
-    const uint32_t TEST_GREATER = 0x3ul;
-    const uint32_t TEST_LEQUAL = 0x2ul;
-    const uint32_t TEST_LESS = 0x1ul;
-    const uint32_t TEST_NEVER = 0x0ul;
-    const uint32_t TEST_NOTEQUAL = 0x6ul;
-    const uint32_t TOUCHMODE_CONTINUOUS = 0x3ul;
-    const uint32_t TOUCHMODE_FRAME = 0x2ul;
-    const uint32_t TOUCHMODE_OFF = 0x0ul;
-    const uint32_t TOUCHMODE_ONESHOT = 0x1ul;
-    const uint32_t ULAW_SAMPLES = 0x1ul;
-    const uint32_t VOL_ZERO = 0x0ul;
-    const uint32_t WRAP_BORDER = 0x0ul;
-    const uint32_t WRAP_REPEAT = 0x1ul;
-    const uint8_t ROMFONT_FORMATS[35] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4};
-    const uint8_t ROMFONT_HEIGHTS[35] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,16,16,13,17,20,22,29,38,16,20,25,28,36,49,63,83,108};
-    const uint8_t ROMFONT_WIDTHS[35] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,11,13,17,18,25,34,13,15,19,21,28,37,49,63,82};
     int LIB_AwaitCoProEmpty(void) { return ::EVE_LIB_AwaitCoProEmpty(); };
     uint16_t LIB_MemRead16(uint32_t address) { return ::EVE_LIB_MemRead16(address); };
     uint16_t LIB_SendString(const char* string) { return ::EVE_LIB_SendString(string); };
     uint32_t LIB_GetResult(int offset) { return ::EVE_LIB_GetResult(offset); };
     uint32_t LIB_MemRead32(uint32_t address) { return ::EVE_LIB_MemRead32(address); };
     uint8_t LIB_MemRead8(uint32_t address) { return ::EVE_LIB_MemRead8(address); };
-    void ALPHA_FUNC(uint8_t func,  uint8_t ref) { ::EVE_ALPHA_FUNC(func, ref); };
-    void BEGIN(uint8_t prim) { ::EVE_BEGIN(prim); };
-    void BITMAP_HANDLE(uint8_t handle) { ::EVE_BITMAP_HANDLE(handle); };
-    void BITMAP_LAYOUT(uint8_t format,  uint16_t linestride,  uint16_t height) { ::EVE_BITMAP_LAYOUT(format, linestride, height); };
-    void BITMAP_LAYOUT_H(uint8_t linestride,  uint8_t height) { ::EVE_BITMAP_LAYOUT_H(linestride, height); };
-    void BITMAP_SIZE(uint8_t filter,  uint8_t wrapx,  uint8_t wrapy,  uint16_t width,  uint16_t height) { ::EVE_BITMAP_SIZE(filter, wrapx, wrapy, width, height); };
-    void BITMAP_SIZE_H(uint8_t width,  uint8_t height) { ::EVE_BITMAP_SIZE_H(width, height); };
-    void BITMAP_SOURCE(int32_t addr) { ::EVE_BITMAP_SOURCE(addr); };
-    void BITMAP_SOURCE2(uint8_t flash_or_ram,  int32_t addr) { ::EVE_BITMAP_SOURCE2(flash_or_ram, addr); };
-    void BITMAP_TRANSFORM_A(long a) { ::EVE_BITMAP_TRANSFORM_A(a); };
-    void BITMAP_TRANSFORM_B(long b) { ::EVE_BITMAP_TRANSFORM_B(b); };
-    void BITMAP_TRANSFORM_C(long c) { ::EVE_BITMAP_TRANSFORM_C(c); };
-    void BITMAP_TRANSFORM_D(long d) { ::EVE_BITMAP_TRANSFORM_D(d); };
-    void BITMAP_TRANSFORM_E(long e) { ::EVE_BITMAP_TRANSFORM_E(e); };
-    void BITMAP_TRANSFORM_F(long f) { ::EVE_BITMAP_TRANSFORM_F(f); };
-    void BLEND_FUNC(uint8_t src,  uint8_t dst) { ::EVE_BLEND_FUNC(src, dst); };
-    void CALL(uint16_t dest) { ::EVE_CALL(dest); };
-    void CELL(uint8_t cell) { ::EVE_CELL(cell); };
-    void CLEAR(uint8_t c,  uint8_t s,  uint8_t t) { ::EVE_CLEAR(c, s, t); };
-    void CLEAR_COLOR(uint32_t c) { ::EVE_CLEAR_COLOR(c); };
-    void CLEAR_COLOR_A(uint8_t alpha) { ::EVE_CLEAR_COLOR_A(alpha); };
-    void CLEAR_COLOR_RGB(uint8_t r,  uint8_t g,  uint8_t b) { ::EVE_CLEAR_COLOR_RGB(r, g, b); };
-    void CLEAR_STENCIL(uint8_t s) { ::EVE_CLEAR_STENCIL(s); };
-    void CLEAR_TAG(uint8_t s) { ::EVE_CLEAR_TAG(s); };
-    void CMD(uint32_t c) { ::EVE_CMD(c); };
+    void LIB_BeginCoProList(void) { ::EVE_LIB_BeginCoProList(); };
+    void LIB_EndCoProList(void) { ::EVE_LIB_EndCoProList(); };
+    void LIB_GetImage(uint32_t *addr,  uint32_t *fmt,  uint32_t *width,  uint32_t *height,  uint32_t *palette) { ::EVE_LIB_GetImage(addr, fmt, width, height, palette); };
+    void LIB_GetMatrix(uint32_t *a,  uint32_t *b,  uint32_t *c,  uint32_t *d,  uint32_t *e,  uint32_t *f) { ::EVE_LIB_GetMatrix(a, b, c, d, e, f); };
+    void LIB_GetProps(uint32_t *addr,  uint32_t *width,  uint32_t *height) { ::EVE_LIB_GetProps(addr, width, height); };
+    void LIB_GetPtr(uint32_t *addr) { ::EVE_LIB_GetPtr(addr); };
+    void LIB_MemCrc(uint32_t ptr,  uint32_t num,  uint32_t *result) { ::EVE_LIB_MemCrc(ptr, num, result); };
+    void LIB_MemWrite16(uint32_t addr,  uint16_t value) { ::EVE_LIB_MemWrite16(addr, value); };
+    void LIB_MemWrite32(uint32_t addr,  uint32_t value) { ::EVE_LIB_MemWrite32(addr, value); };
+    void LIB_MemWrite8(uint32_t addr,  uint8_t value) { ::EVE_LIB_MemWrite8(addr, value); };
+    void LIB_ReadDataFromRAMG(uint8_t *ImgData,  uint32_t DataSize,  uint32_t SrcAddress) { ::EVE_LIB_ReadDataFromRAMG(ImgData, DataSize, SrcAddress); };
+    void LIB_WriteDataToCMD(const uint8_t *ImgData,  uint32_t DataSize) { ::EVE_LIB_WriteDataToCMD(ImgData, DataSize); };
+    void LIB_WriteDataToRAMG(const uint8_t *ImgData,  uint32_t DataSize,  uint32_t DestAddress) { ::EVE_LIB_WriteDataToRAMG(ImgData, DataSize, DestAddress); };
+
     void CMD_ANIMDRAW(int32_t ch) { ::EVE_CMD_ANIMDRAW(ch); };
     void CMD_ANIMFRAME(int16_t x,  int16_t y,  uint32_t aoptr,  uint32_t frame) { ::EVE_CMD_ANIMFRAME(x, y, aoptr, frame); };
     void CMD_ANIMFRAMERAM(int16_t x,  int16_t y,  uint32_t aoptr,  uint32_t frame ) { ::EVE_CMD_ANIMFRAMERAM(x, y, aoptr, frame); };
@@ -507,6 +198,32 @@ class Bridgetek_EVE4
     void CMD_VIDEOSTART(void) { ::EVE_CMD_VIDEOSTART(); };
     void CMD_VIDEOSTARTF(void) { ::EVE_CMD_VIDEOSTARTF(); };
     void CMD_WAIT(uint32_t us) { ::EVE_CMD_WAIT(us); };
+
+    void ALPHA_FUNC(uint8_t func,  uint8_t ref) { ::EVE_ALPHA_FUNC(func, ref); };
+    void BEGIN(uint8_t prim) { ::EVE_BEGIN(prim); };
+    void BITMAP_HANDLE(uint8_t handle) { ::EVE_BITMAP_HANDLE(handle); };
+    void BITMAP_LAYOUT(uint8_t format,  uint16_t linestride,  uint16_t height) { ::EVE_BITMAP_LAYOUT(format, linestride, height); };
+    void BITMAP_LAYOUT_H(uint8_t linestride,  uint8_t height) { ::EVE_BITMAP_LAYOUT_H(linestride, height); };
+    void BITMAP_SIZE(uint8_t filter,  uint8_t wrapx,  uint8_t wrapy,  uint16_t width,  uint16_t height) { ::EVE_BITMAP_SIZE(filter, wrapx, wrapy, width, height); };
+    void BITMAP_SIZE_H(uint8_t width,  uint8_t height) { ::EVE_BITMAP_SIZE_H(width, height); };
+    void BITMAP_SOURCE(int32_t addr) { ::EVE_BITMAP_SOURCE(addr); };
+    void BITMAP_SOURCE2(uint8_t flash_or_ram,  int32_t addr) { ::EVE_BITMAP_SOURCE2(flash_or_ram, addr); };
+    void BITMAP_TRANSFORM_A(long a) { ::EVE_BITMAP_TRANSFORM_A(a); };
+    void BITMAP_TRANSFORM_B(long b) { ::EVE_BITMAP_TRANSFORM_B(b); };
+    void BITMAP_TRANSFORM_C(long c) { ::EVE_BITMAP_TRANSFORM_C(c); };
+    void BITMAP_TRANSFORM_D(long d) { ::EVE_BITMAP_TRANSFORM_D(d); };
+    void BITMAP_TRANSFORM_E(long e) { ::EVE_BITMAP_TRANSFORM_E(e); };
+    void BITMAP_TRANSFORM_F(long f) { ::EVE_BITMAP_TRANSFORM_F(f); };
+    void BLEND_FUNC(uint8_t src,  uint8_t dst) { ::EVE_BLEND_FUNC(src, dst); };
+    void CALL(uint16_t dest) { ::EVE_CALL(dest); };
+    void CELL(uint8_t cell) { ::EVE_CELL(cell); };
+    void CLEAR(uint8_t c,  uint8_t s,  uint8_t t) { ::EVE_CLEAR(c, s, t); };
+    void CLEAR_COLOR(uint32_t c) { ::EVE_CLEAR_COLOR(c); };
+    void CLEAR_COLOR_A(uint8_t alpha) { ::EVE_CLEAR_COLOR_A(alpha); };
+    void CLEAR_COLOR_RGB(uint8_t r,  uint8_t g,  uint8_t b) { ::EVE_CLEAR_COLOR_RGB(r, g, b); };
+    void CLEAR_STENCIL(uint8_t s) { ::EVE_CLEAR_STENCIL(s); };
+    void CLEAR_TAG(uint8_t s) { ::EVE_CLEAR_TAG(s); };
+    void CMD(uint32_t c) { ::EVE_CMD(c); };
     void COLOR(uint32_t c) { ::EVE_COLOR(c); };
     void COLOR_A(uint8_t alpha) { ::EVE_COLOR_A(alpha); };
     void COLOR_MASK(uint8_t r,  uint8_t g,  uint8_t b,  uint8_t a) { ::EVE_COLOR_MASK(r, g, b, a); };
@@ -515,22 +232,8 @@ class Bridgetek_EVE4
     void END(void) { ::EVE_END(); };
     void Init(void) { ::EVE_Init(); };
     void JUMP(uint16_t dest) { ::EVE_JUMP(dest); };
-    void LIB_BeginCoProList(void) { ::EVE_LIB_BeginCoProList(); };
-    void LIB_EndCoProList(void) { ::EVE_LIB_EndCoProList(); };
-    void LIB_GetImage(uint32_t *addr,  uint32_t *fmt,  uint32_t *width,  uint32_t *height,  uint32_t *palette) { ::EVE_LIB_GetImage(addr, fmt, width, height, palette); };
-    void LIB_GetMatrix(uint32_t *a,  uint32_t *b,  uint32_t *c,  uint32_t *d,  uint32_t *e,  uint32_t *f) { ::EVE_LIB_GetMatrix(a, b, c, d, e, f); };
-    void LIB_GetProps(uint32_t *addr,  uint32_t *width,  uint32_t *height) { ::EVE_LIB_GetProps(addr, width, height); };
-    void LIB_GetPtr(uint32_t *addr) { ::EVE_LIB_GetPtr(addr); };
-    void LIB_MemCrc(uint32_t ptr,  uint32_t num,  uint32_t *result) { ::EVE_LIB_MemCrc(ptr, num, result); };
-    void LIB_MemWrite16(uint32_t addr,  uint16_t value) { ::EVE_LIB_MemWrite16(addr, value); };
-    void LIB_MemWrite32(uint32_t addr,  uint32_t value) { ::EVE_LIB_MemWrite32(addr, value); };
-    void LIB_MemWrite8(uint32_t addr,  uint8_t value) { ::EVE_LIB_MemWrite8(addr, value); };
-    void LIB_ReadDataFromRAMG(uint8_t *ImgData,  uint32_t DataSize,  uint32_t SrcAddress) { ::EVE_LIB_ReadDataFromRAMG(ImgData, DataSize, SrcAddress); };
-    void LIB_WriteDataToCMD(const uint8_t *ImgData,  uint32_t DataSize) { ::EVE_LIB_WriteDataToCMD(ImgData, DataSize); };
-    void LIB_WriteDataToRAMG(const uint8_t *ImgData,  uint32_t DataSize,  uint32_t DestAddress) { ::EVE_LIB_WriteDataToRAMG(ImgData, DataSize, DestAddress); };
     void LINE_WIDTH(uint16_t width) { ::EVE_LINE_WIDTH(width); };
     void MACRO(uint8_t m) { ::EVE_MACRO(m); };
-    void NOP(void) { ::EVE_NOP(); };
     void PALETTE_SOURCE(uint32_t addr) { ::EVE_PALETTE_SOURCE(addr); };
     void POINT_SIZE(uint16_t size) { ::EVE_POINT_SIZE(size); };
     void RESTORE_CONTEXT(void) { ::EVE_RESTORE_CONTEXT(); };
@@ -549,6 +252,313 @@ class Bridgetek_EVE4
     void VERTEX_TRANSLATE_X(uint32_t x) { ::EVE_VERTEX_TRANSLATE_X(x); };
     void VERTEX_TRANSLATE_Y(uint32_t y) { ::EVE_VERTEX_TRANSLATE_Y(y); };
 
+    const uint8_t ROMFONT_FORMATS[35] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L1,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4,(uint8_t)FORMAT_L4};
+    const uint8_t ROMFONT_HEIGHTS[35] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,16,16,13,17,20,22,29,38,16,20,25,28,36,49,63,83,108};
+    const uint8_t ROMFONT_WIDTHS[35] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,11,13,17,18,25,34,13,15,19,21,28,37,49,63,82};
+
+    enum {
+      ADC_DIFFERENTIAL = 0x1ul,
+      ADC_SINGLE_ENDED = 0x0ul,
+      ADPCM_SAMPLES = 0x2ul,
+      ANIM_HOLD = 0x2ul,
+      ANIM_LOOP = 0x1ul,
+      ANIM_ONCE = 0x0ul,
+      BEGIN_BITMAPS = 0x1ul,
+      BEGIN_EDGE_STRIP_A = 0x7ul,
+      BEGIN_EDGE_STRIP_B = 0x8ul,
+      BEGIN_EDGE_STRIP_L = 0x6ul,
+      BEGIN_EDGE_STRIP_R = 0x5ul,
+      BEGIN_LINES = 0x3ul,
+      BEGIN_LINE_STRIP = 0x4ul,
+      BEGIN_POINTS = 0x2ul,
+      BEGIN_RECTS = 0x9ul,
+      BLEND_DST_ALPHA = 0x3ul,
+      BLEND_ONE = 0x1ul,
+      BLEND_ONE_MINUS_DST_ALPHA = 0x5ul,
+      BLEND_ONE_MINUS_SRC_ALPHA = 0x4ul,
+      BLEND_SRC_ALPHA = 0x2ul,
+      BLEND_ZERO = 0x0ul,
+      DLSWAP_DONE = 0x0ul,
+      DLSWAP_FRAME = 0x2ul,
+      DLSWAP_LINE = 0x1ul,
+      FILTER_BILINEAR = 0x1ul,
+      FILTER_NEAREST = 0x0ul,
+      FLASH_STATUS_BASIC = 0x2ul,
+      FLASH_STATUS_DETACHED = 0x1ul,
+      FLASH_STATUS_FULL = 0x3ul,
+      FLASH_STATUS_INIT = 0x0ul,
+      FORMAT_ARGB1555 = 0x0ul,
+      FORMAT_ARGB2 = 0x5ul,
+      FORMAT_ARGB4 = 0x6ul,
+      FORMAT_BARGRAPH = 0xbul,
+      FORMAT_COMPRESSED_RGBA_ASTC_10x10_KHR = 0x93bbul,
+      FORMAT_COMPRESSED_RGBA_ASTC_10x5_KHR = 0x93b8ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_10x6_KHR = 0x93b9ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_10x8_KHR = 0x93baul,
+      FORMAT_COMPRESSED_RGBA_ASTC_12x10_KHR = 0x93bcul,
+      FORMAT_COMPRESSED_RGBA_ASTC_12x12_KHR = 0x93bdul,
+      FORMAT_COMPRESSED_RGBA_ASTC_4x4_KHR = 0x93b0ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_5x4_KHR = 0x93b1ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_5x5_KHR = 0x93b2ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_6x5_KHR = 0x93b3ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_6x6_KHR = 0x93b4ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_8x5_KHR = 0x93b5ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_8x6_KHR = 0x93b6ul,
+      FORMAT_COMPRESSED_RGBA_ASTC_8x8_KHR = 0x93b7ul,
+      FORMAT_L1 = 0x1ul,
+      FORMAT_L2 = 0x11ul,
+      FORMAT_L4 = 0x2ul,
+      FORMAT_L8 = 0x3ul,
+      FORMAT_PALETTED = 0x8ul,
+      FORMAT_PALETTED4444 = 0xful,
+      FORMAT_PALETTED565 = 0xeul,
+      FORMAT_PALETTED8 = 0x10ul,
+      FORMAT_RGB332 = 0x4ul,
+      FORMAT_RGB565 = 0x7ul,
+      FORMAT_TEXT8X8 = 0x9ul,
+      FORMAT_TEXTVGA = 0xaul,
+      INT_CMDEMPTY = 0x20ul,
+      INT_CMDFLAG = 0x40ul,
+      INT_CONVCOMPLETE = 0x80ul,
+      INT_G8 = 0x12ul,
+      INT_L8C = 0xcul,
+      INT_PLAYBACK = 0x10ul,
+      INT_SOUND = 0x8ul,
+      INT_SWAP = 0x1ul,
+      INT_TAG = 0x4ul,
+      INT_TOUCH = 0x2ul,
+      INT_VGA = 0xdul,
+      LINEAR_SAMPLES = 0x0ul,
+      LOW_FREQ_BOUND = 58800000L,
+      OPT_3D = 0x0ul,
+      OPT_CENTER = 0x600ul,
+      OPT_CENTERX = 0x200ul,
+      OPT_CENTERY = 0x400ul,
+      OPT_DITHER = 0x100ul,
+      OPT_FILL = 0x2000ul,
+      OPT_FLASH = 0x40ul,
+      OPT_FLAT = 0x100ul,
+      OPT_FORMAT = 0x1000ul,
+      OPT_FULLSCREEN = 0x8ul,
+      OPT_MEDIAFIFO = 0x10ul,
+      OPT_MONO = 0x1ul,
+      OPT_NOBACK = 0x1000ul,
+      OPT_NODL = 0x2ul,
+      OPT_NOHANDS = 0xc000ul,
+      OPT_NOHM = 0x4000ul,
+      OPT_NOPOINTER = 0x4000ul,
+      OPT_NOSECS = 0x8000ul,
+      OPT_NOTEAR = 0x4ul,
+      OPT_NOTICKS = 0x2000ul,
+      OPT_OVERLAY = 0x80ul,
+      OPT_RGB565 = 0x0ul,
+      OPT_RIGHTX = 0x800ul,
+      OPT_SIGNED = 0x100ul,
+      OPT_SOUND = 0x20ul,
+      RAM_BIST = 0x380000ul,
+      RAM_CMD = 0x308000ul,
+      RAM_CMD_SIZE = (4*1024L),
+      RAM_DL = 0x300000ul,
+      RAM_DL_SIZE = (8*1024L),
+      RAM_ERR_REPORT = 0x309800ul,
+      RAM_G = 0x0ul,
+      RAM_REG = 0x302000ul,
+      RAM_ROMSUB = 0x30a000ul,
+      RAM_TOP = 0x304000ul,
+      ROMFONT_MAX = 34,
+      ROMFONT_TABLEADDRESS = 0x2ffffcul,
+      STENCIL_DECR = 0x4ul,
+      STENCIL_INCR = 0x3ul,
+      STENCIL_INVERT = 0x5ul,
+      STENCIL_KEEP = 0x1ul,
+      STENCIL_REPLACE = 0x2ul,
+      STENCIL_ZERO = 0x0ul,
+      TEST_ALWAYS = 0x7ul,
+      TEST_EQUAL = 0x5ul,
+      TEST_GEQUAL = 0x4ul,
+      TEST_GREATER = 0x3ul,
+      TEST_LEQUAL = 0x2ul,
+      TEST_LESS = 0x1ul,
+      TEST_NEVER = 0x0ul,
+      TEST_NOTEQUAL = 0x6ul,
+      TOUCHMODE_CONTINUOUS = 0x3ul,
+      TOUCHMODE_FRAME = 0x2ul,
+      TOUCHMODE_OFF = 0x0ul,
+      TOUCHMODE_ONESHOT = 0x1ul,
+      ULAW_SAMPLES = 0x1ul,
+      VOL_ZERO = 0x0ul,
+      WRAP_BORDER = 0x0ul,
+      WRAP_REPEAT = 0x1ul,
+
+      ALPHA = 0x5ul,
+      API = 4,
+      BLUE = 0x4ul,
+      GLFORMAT = 0x1ful,
+      GREEN = 0x3ul,
+      RED = 0x2ul,
+
+      REG_ADAPTIVE_FRAMERATE = 0x30257cul,
+      REG_AH_HCYCLE_MAX = 0x302610,
+      REG_ANALOG = 0x30216cul,
+      REG_ANA_COMP = 0x302184ul,
+      REG_ANIM_ACTIVE = 0x30902cul,
+      REG_BIST_EN = 0x302174ul,
+      REG_BUSYBITS = 0x3020e8ul,
+      REG_CLOCK = 0x302008ul,
+      REG_CMDB_SPACE = 0x302574ul,
+      REG_CMDB_WRITE = 0x302578ul,
+      REG_CMD_DL = 0x302100ul,
+      REG_CMD_READ = 0x3020f8ul,
+      REG_CMD_WRITE = 0x3020fcul,
+      REG_COPRO_PATCH_PTR = 0x309162ul,
+      REG_CPURESET = 0x302020ul,
+      REG_CSPREAD = 0x302068ul,
+      REG_CTOUCH_EXTENDED = 0x302108ul,
+      REG_CTOUCH_TOUCH0_XY = 0x302124ul,
+      REG_CTOUCH_TOUCH1_XY = 0x30211cul,
+      REG_CTOUCH_TOUCH2_XY = 0x30218cul,
+      REG_CTOUCH_TOUCH3_XY = 0x302190ul,
+      REG_CTOUCH_TOUCH4_X = 0x30216cul,
+      REG_CTOUCH_TOUCH4_Y = 0x302120ul,
+      REG_DITHER = 0x302060ul,
+      REG_DLSWAP = 0x302054ul,
+      REG_EHOST_TOUCH_ACK = 0x302170ul,
+      REG_EHOST_TOUCH_ID = 0x302114ul,
+      REG_EHOST_TOUCH_X = 0x30210cul,
+      REG_EHOST_TOUCH_Y = 0x302118ul,
+      REG_EJPG_ACC = 0x302358ul,
+      REG_EJPG_BUSY = 0x302198ul,
+      REG_EJPG_DAT = 0x30219cul,
+      REG_EJPG_DCC = 0x302340ul,
+      REG_EJPG_DEBUG = 0x30255cul,
+      REG_EJPG_DST = 0x3021a4ul,
+      REG_EJPG_FORMAT = 0x3021b0ul,
+      REG_EJPG_H = 0x3021acul,
+      REG_EJPG_HT = 0x302240ul,
+      REG_EJPG_OPTIONS = 0x3021a0ul,
+      REG_EJPG_Q = 0x3021c0ul,
+      REG_EJPG_READY = 0x302194ul,
+      REG_EJPG_RI = 0x3021b4ul,
+      REG_EJPG_SCALE = 0x302558ul,
+      REG_EJPG_TDA = 0x3021bcul,
+      REG_EJPG_TQ = 0x3021b8ul,
+      REG_EJPG_W = 0x3021a8ul,
+      REG_ESPIM_ADD = 0x30259cul,
+      REG_ESPIM_COUNT = 0x3025a0ul,
+      REG_ESPIM_DUMMY = 0x3025e4ul,
+      REG_ESPIM_READSTART = 0x302588ul,
+      REG_ESPIM_SEQ = 0x30258cul,
+      REG_ESPIM_TRIG = 0x3025e8ul,
+      REG_ESPIM_WINDOW = 0x3025a4ul,
+      REG_FLASH_SIZE = 0x309024ul,
+      REG_FLASH_STATUS = 0x3025f0ul,
+      REG_FRAMES = 0x302004ul,
+      REG_FREQUENCY = 0x30200cul,
+      REG_FULLBUSYBITS = 0x3025f4ul,
+      REG_GPIO = 0x302094ul,
+      REG_GPIOX = 0x30209cul,
+      REG_GPIOX_DIR = 0x302098ul,
+      REG_GPIO_DIR = 0x302090ul,
+      REG_HCYCLE = 0x30202cul,
+      REG_HOFFSET = 0x302030ul,
+      REG_HSIZE = 0x302034ul,
+      REG_HSYNC0 = 0x302038ul,
+      REG_HSYNC1 = 0x30203cul,
+      REG_ID = 0x302000ul,
+      REG_INT_EN = 0x3020acul,
+      REG_INT_FLAGS = 0x3020a8ul,
+      REG_INT_MASK = 0x3020b0ul,
+      REG_MACRO_0 = 0x3020d8ul,
+      REG_MACRO_1 = 0x3020dcul,
+      REG_MEDIAFIFO_BASE = 0x30901cul,
+      REG_MEDIAFIFO_READ = 0x309014ul,
+      REG_MEDIAFIFO_SIZE = 0x309020ul,
+      REG_MEDIAFIFO_WRITE = 0x309018ul,
+      REG_OUTBITS = 0x30205cul,
+      REG_PCLK = 0x302070ul,
+      REG_PCLK_2X = 0x302618,
+      REG_PCLK_FREQ = 0x302614,
+      REG_PCLK_POL = 0x30206cul,
+      REG_PLAY = 0x30208cul,
+      REG_PLAYBACK_FORMAT = 0x3020c4ul,
+      REG_PLAYBACK_FREQ = 0x3020c0ul,
+      REG_PLAYBACK_LENGTH = 0x3020b8ul,
+      REG_PLAYBACK_LOOP = 0x3020c8ul,
+      REG_PLAYBACK_PAUSE = 0x3025ecul,
+      REG_PLAYBACK_PLAY = 0x3020ccul,
+      REG_PLAYBACK_READPTR = 0x3020bcul,
+      REG_PLAYBACK_START = 0x3020b4ul,
+      REG_PLAY_CONTROL = 0x30914eul,
+      REG_PWM_DUTY = 0x3020d4ul,
+      REG_PWM_HZ = 0x3020d0ul,
+      REG_RAM_FOLD = 0x3020f4ul,
+      REG_RASTERY = 0x302560ul,
+      REG_RENDERMODE = 0x302010ul,
+      REG_ROMSUB_SEL = 0x3020f0ul,
+      REG_ROTATE = 0x302058ul,
+      REG_SNAPFORMAT = 0x30201cul,
+      REG_SNAPSHOT = 0x302018ul,
+      REG_SNAPY = 0x302014ul,
+      REG_SOUND = 0x302088ul,
+      REG_SPIM = 0x302584ul,
+      REG_SPIM_DIR = 0x302580ul,
+      REG_SPI_EARLY_TX = 0x30217cul,
+      REG_SPI_WIDTH = 0x302188ul,
+      REG_SWIZZLE = 0x302064ul,
+      REG_TAG = 0x30207cul,
+      REG_TAG_X = 0x302074ul,
+      REG_TAG_Y = 0x302078ul,
+      REG_TAP_CRC = 0x302024ul,
+      REG_TAP_MASK = 0x302028ul,
+      REG_TOUCH_ADC_MODE = 0x302108ul,
+      REG_TOUCH_CHARGE = 0x30210cul,
+      REG_TOUCH_CONFIG = 0x302168ul,
+      REG_TOUCH_DIRECT_XY = 0x30218cul,
+      REG_TOUCH_DIRECT_Z1Z2 = 0x302190ul,
+      REG_TOUCH_FAULT = 0x302170ul,
+      REG_TOUCH_MODE = 0x302104ul,
+      REG_TOUCH_OVERSAMPLE = 0x302114ul,
+      REG_TOUCH_RAW_XY = 0x30211cul,
+      REG_TOUCH_RZ = 0x302120ul,
+      REG_TOUCH_RZTHRESH = 0x302118ul,
+      REG_TOUCH_SCREEN_XY = 0x302124ul,
+      REG_TOUCH_SETTLE = 0x302110ul,
+      REG_TOUCH_TAG = 0x30212cul,
+      REG_TOUCH_TAG1 = 0x302134ul,
+      REG_TOUCH_TAG1_XY = 0x302130ul,
+      REG_TOUCH_TAG2 = 0x30213cul,
+      REG_TOUCH_TAG2_XY = 0x302138ul,
+      REG_TOUCH_TAG3 = 0x302144ul,
+      REG_TOUCH_TAG3_XY = 0x302140ul,
+      REG_TOUCH_TAG4 = 0x30214cul,
+      REG_TOUCH_TAG4_XY = 0x302148ul,
+      REG_TOUCH_TAG_XY = 0x302128ul,
+      REG_TOUCH_TRANSFORM_A = 0x302150ul,
+      REG_TOUCH_TRANSFORM_B = 0x302154ul,
+      REG_TOUCH_TRANSFORM_C = 0x302158ul,
+      REG_TOUCH_TRANSFORM_D = 0x30215cul,
+      REG_TOUCH_TRANSFORM_E = 0x302160ul,
+      REG_TOUCH_TRANSFORM_F = 0x302164ul,
+      REG_TRACKER = 0x309000ul,
+      REG_TRACKER_1 = 0x309004ul,
+      REG_TRACKER_2 = 0x309008ul,
+      REG_TRACKER_3 = 0x30900cul,
+      REG_TRACKER_4 = 0x309010ul,
+      REG_TRIM = 0x302180ul,
+      REG_UNDERRUN = 0x30260C,
+      REG_VCYCLE = 0x302040ul,
+      REG_VOFFSET = 0x302044ul,
+      REG_VOL_PB = 0x302080ul,
+      REG_VOL_SOUND = 0x302084ul,
+      REG_VSIZE = 0x302048ul,
+      REG_VSYNC0 = 0x30204cul,
+      REG_VSYNC1 = 0x302050ul,
+    };
+
+  public:
+    uint16_t DISP_WIDTH(void);
+    uint16_t DISP_HEIGHT(void);
+
   public:
     /* Font table structure */
     /* On EVE4 onwards this is called the Legacy Font Structure. */
@@ -566,7 +576,7 @@ class Bridgetek_EVE4
         uint32_t    FontHeightInPixels;
         /* Pointer to font graphics raw data */
         uint32_t    PointerToFontGraphicsData;
-    } EVE_GPU_FONT_HEADER;
+    } GPU_FONT_HEADER;
 
     /* On EVE4 onwards this is called the Extended Font Structure. */
     typedef struct
@@ -591,7 +601,7 @@ class Bridgetek_EVE4
         uint32_t    PointerToFontGraphicsData;
         /* Number of characters */
         uint32_t    FontNumberCharacters;
-    } EVE_GPU_EXT_FONT_HEADER;
+    } GPU_EXT_FONT_HEADER;
 
 
   private:

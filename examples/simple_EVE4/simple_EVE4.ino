@@ -40,21 +40,12 @@
 #include "eve_example.h"
 
 /**
- @brief EVE library handle.
- @details This is the one instance of the EVE library. Available as a global to other files.
- */
-Bridgetek_EVE4 eve;
-
-extern const uint8_t font0[];
-const Bridgetek_EVE4::EVE_GPU_FONT_HEADER *font0_hdr = (const Bridgetek_EVE4::EVE_GPU_FONT_HEADER *)font0;
-
-/**
  * @brief Functions used to store calibration data in file.
    @details Currently not used.
  */
 //@{
 int8_t platform_calib_init(void) {
-  return 1;
+  return -1;
 }
 
 int8_t platform_calib_write(struct touchscreen_calibration *calib) {
@@ -66,86 +57,15 @@ int8_t platform_calib_read(struct touchscreen_calibration *calib) {
   (void)calib;
   return -1;
 }
+//@}
 
 void setup() {
   Serial.begin(9600);
-
-  uint32_t font_end;
-
-  // Setup the EVE library (WSVGA)
-  eve.setup(WSVGA);
-  // Initialise the display
-  eve.Init();
-
-  // Calibrate the display
-  Serial.print("Calibrating display...\n");
-  if (eve_calibrate() != 0) {
-    Serial.print("Exception...\n");
-    while (1)
-      ;
-  }
-
-  // Load fonts and images
-  Serial.print("Loading font...\n");
-  font_end = eve_init_fonts();
-  Serial.print("Loading images...\n");
-  eve_load_images(font_end);
-
-  Serial.print("Starting demo...\n");
 }
 
-uint32_t counter = 0;
-
 void loop() {
-  uint8_t key;
-  int8_t i;
-  uint32_t units;
+  // Initialise the display
+  Serial.print("Starting EVE...\n");
 
-  // Comment this line if the counter needs to increment continuously.
-  // Uncomment and it will increment by one each press.
-  //while (eve_read_tag(&key) != 0);
-
-  eve.LIB_BeginCoProList();
-  eve.CMD_DLSTART();
-  eve.CLEAR_COLOR_RGB(0, 0, 0);
-  eve.CLEAR(1, 1, 1);
-  eve.COLOR_RGB(255, 255, 255);
-
-  eve.BEGIN(eve.BEGIN_BITMAPS);
-  // Set origin on canvas using EVE_VERTEX_TRANSLATE.
-  eve.VERTEX_TRANSLATE_X(((EVE_DISP_WIDTH / 2) - (eve_img_bridgetek_logo_width / 2)) * 16);
-  eve.VERTEX2II(0, 0, BITMAP_BRIDGETEK_LOGO, 0);
-  eve.VERTEX_TRANSLATE_X(0);
-
-  eve.CMD_TEXT(EVE_DISP_WIDTH / 2, eve_img_bridgetek_logo_height,
-               28, eve.OPT_CENTERX, "Touch the counter");
-
-  eve.TAG(100);
-
-  eve.COLOR_RGB(255, 0, 0);
-
-  eve.BEGIN(eve.BEGIN_BITMAPS);
-  units = 1;
-
-  eve.VERTEX_TRANSLATE_Y((EVE_DISP_HEIGHT / 2) * 16);
-  for (i = 0; i < 5; i++) {
-    eve.VERTEX_TRANSLATE_X((((EVE_DISP_WIDTH - (font0_hdr->FontWidthInPixels * 5)) / 2) - (font0_hdr->FontWidthInPixels) + (font0_hdr->FontWidthInPixels * (5 - i))) * 16);
-    eve.VERTEX2II(0, 0, FONT_CUSTOM, ((counter / units) % 10) + 1);  //+1 as in the converted font the number '0' is in position 1 in the font table
-    units *= 10;
-  }
-
-  eve.DISPLAY();
-  eve.CMD_SWAP();
-  eve.LIB_EndCoProList();
-  eve.LIB_AwaitCoProEmpty();
-
-  while (eve_read_tag(&key) == 0)
-    ;
-
-  if (key == 100) {
-    counter++;
-    if (counter == 100000) {
-      counter = 0;
-    }
-  }
+  eve_example();
 }

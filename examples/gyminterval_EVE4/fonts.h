@@ -1,7 +1,6 @@
 /**
-    @file eve_example.h
-    @brief Target is BT817/BT818
-**/
+ @file fonts.h
+ */
 /*
  * ============================================================================
  * (C) Copyright,  Bridgetek Pte. Ltd.
@@ -38,50 +37,38 @@
  * ============================================================================
  */
 
-#ifndef _EVE_EXAMPLE_H
-#define _EVE_EXAMPLE_H
-
-#include <stdint.h>
-#include <string.h>
-
-#if defined(ESP8266) || defined(ESP32)
-#include <pgmspace.h>
-#else
-#include <avr/pgmspace.h>
-#endif
-
-#include <Bridgetek_EVE4.h>
+#ifndef EVE_FONTS_H
+#define EVE_FONTS_H
 
 /**
- @brief EVE library handle.
- @details This is the one instance of the EVE library. Available as a global.
+ @brief Maximum number of characters to cache form a font.
  */
-extern Bridgetek_EVE4 eve;
+#define FONT_MAX_CHARACTERS 128
 
-/**
- @brief Definitions of handles for custom fonts and bitmaps.
+ /**
+ @brief Structure to hold cache of font settings.
+ @details This is used to store the font parameters to accelerate drawing
+ the glyphs during the application.
  */
-//@{
-#define FONT_CUSTOM 8
-#define BITMAP_BRIDGETEK_LOGO 7
-//@}
+struct eve_font_cache {
+    uint8_t handle;
+    uint8_t legacy;
+    uint8_t widths[FONT_MAX_CHARACTERS];
+    uint32_t glyphs[FONT_MAX_CHARACTERS];
+    uint16_t height;
+    uint16_t width;
+    uint16_t format;
+    uint16_t linestride;
+    uint8_t first;
+};
 
-/* Globals available within the eve_example code */
-extern uint32_t eve_img_bridgetek_logo_width;
-extern uint32_t eve_img_bridgetek_logo_height;
 
-/* Functions called within the eve_example code */
-uint32_t eve_init_fonts(void);
-uint32_t eve_load_images(uint32_t);
+uint8_t font_getmax(void);
+uint32_t font_getromptr(uint8_t fontnumber);
+void font_getfontinforom(struct eve_font_cache *cache, uint8_t fontnumber);
+void font_getfontinfocustom(struct eve_font_cache *cache, uint8_t fontnumber, uint32_t fontptr, uint8_t first_character);
+uint16_t font_getheight(struct eve_font_cache *cache);
+uint16_t font_getwidth(struct eve_font_cache *cache);
+uint16_t font_getcharwidth(struct eve_font_cache *cache, uint8_t ch);
 
-/* Functions called from eve_example code to platform specific code */
-int8_t platform_calib_init(void);
-int8_t platform_calib_write(struct touchscreen_calibration *calib);
-int8_t platform_calib_read(struct touchscreen_calibration *calib);
-
-/* Entry point to the example code */
-void eve_example(void);
-
-#include "touch.h"
-
-#endif /* _EVE_EXAMPLE_H */
+#endif // EVE_FONTS_H

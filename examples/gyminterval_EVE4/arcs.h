@@ -1,7 +1,6 @@
 /**
-    @file eve_example.h
-    @brief Target is BT817/BT818
-**/
+ @file arcs.h
+ */
 /*
  * ============================================================================
  * (C) Copyright,  Bridgetek Pte. Ltd.
@@ -38,50 +37,51 @@
  * ============================================================================
  */
 
-#ifndef _EVE_EXAMPLE_H
-#define _EVE_EXAMPLE_H
+#ifndef EVE_ARCS_H
+#define EVE_ARCS_H
 
-#include <stdint.h>
-#include <string.h>
-
-#if defined(ESP8266) || defined(ESP32)
-#include <pgmspace.h>
-#else
-#include <avr/pgmspace.h>
-#endif
-
-#include <Bridgetek_EVE4.h>
+#include "trig_furman.h"
 
 /**
- @brief EVE library handle.
- @details This is the one instance of the EVE library. Available as a global.
+ @brief Function to draw a simple arc gauge, using a indicator point with
+        blanking.
+ @details This function will draw and arc guage and fill it based upon the
+          user_value input vairble, utilising a simple indicator point which
+          has a blanking outline within the gauge fill.
+ @param x x position for the center of the arc.
+ @param y y position for the center of the arc.
+ @param r0 radius value of inner part of the arc.
+ @param r1 radius value of outer part of the arc.
+ @param a0 degrees clockwise from the bottom of the circle where
+                      we want the arc to start.
+ @param a1 degrees clockwise from the bottom of the circle where
+                    we want the arc to end.
  */
-extern Bridgetek_EVE4 eve;
+void arc_simple(int16_t x, int16_t y,
+    uint16_t r0, uint16_t r1,
+    uint16_t a0, uint16_t a1
+);
 
 /**
- @brief Definitions of handles for custom fonts and bitmaps.
+ @brief Function to draw a simple arc gauge, using a indicator point with
+        blanking.
+ @details This function will draw and arc guage and fill it based upon the
+          user_value input vairble, utilising a simple indicator point which
+          has a blanking outline within the gauge fill.
+ @param x x position for the center of the arc.
+ @param y y position for the center of the arc.
+ @param r0 radius value of inner part of the arc.
+ @param r1 radius value of outer part of the arc.
+ @param a0 degrees clockwise from the bottom of the circle where
+                      we want the arc to start.
+ @param a1 degrees clockwise from the bottom of the circle where
+                    we want the arc to end.
+ @param user_value position of indicator on the arc.
  */
-//@{
-#define FONT_CUSTOM 8
-#define BITMAP_BRIDGETEK_LOGO 7
-//@}
+void arc_simple_gauge(int16_t x, int16_t y,
+    uint16_t r0, uint16_t r1,
+    uint16_t a0, uint16_t a1,
+    uint16_t val
+);
 
-/* Globals available within the eve_example code */
-extern uint32_t eve_img_bridgetek_logo_width;
-extern uint32_t eve_img_bridgetek_logo_height;
-
-/* Functions called within the eve_example code */
-uint32_t eve_init_fonts(void);
-uint32_t eve_load_images(uint32_t);
-
-/* Functions called from eve_example code to platform specific code */
-int8_t platform_calib_init(void);
-int8_t platform_calib_write(struct touchscreen_calibration *calib);
-int8_t platform_calib_read(struct touchscreen_calibration *calib);
-
-/* Entry point to the example code */
-void eve_example(void);
-
-#include "touch.h"
-
-#endif /* _EVE_EXAMPLE_H */
+#endif // EVE_ARCS_H

@@ -42,13 +42,6 @@
 #define _EVE_EXAMPLE_H
 
 #include <stdint.h>
-#include <string.h>
-
-#if defined(ESP8266) || defined(ESP32)
-#include <pgmspace.h>
-#else
-#include <avr/pgmspace.h>
-#endif
 
 #include <Bridgetek_EVE4.h>
 
@@ -75,6 +68,7 @@ uint32_t eve_init_fonts(void);
 uint32_t eve_load_images(uint32_t);
 
 /* Functions called from eve_example code to platform specific code */
+uint32_t platform_get_time(void);
 int8_t platform_calib_init(void);
 int8_t platform_calib_write(struct touchscreen_calibration *calib);
 int8_t platform_calib_read(struct touchscreen_calibration *calib);
@@ -82,6 +76,13 @@ int8_t platform_calib_read(struct touchscreen_calibration *calib);
 /* Entry point to the example code */
 void eve_example(void);
 
+/* Functions called within the eve_example code */
+uint8_t eve_romfont_width(uint8_t font);
+uint8_t eve_romfont_height(uint8_t font);
+
 #include "touch.h"
+#include "arcs.h"
+#include "fonts.h"
+#include "sound.h"
 
 #endif /* _EVE_EXAMPLE_H */
